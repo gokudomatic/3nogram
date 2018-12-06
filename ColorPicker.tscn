@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ColorPicker.gd" type="Script" id=1]
+[ext_resource path="res://ColorPalette.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Gradient" id=1]
+
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+
+flags = 4
+gradient = SubResource( 1 )
+width = 1
+
+[node name="ColorPicker" type="Container"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 44.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 44, 220 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="current_color_btn" type="TextureButton" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 43.0
+margin_bottom = 43.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = SubResource( 2 )
+expand = true
+_sections_unfolded = [ "Material", "Rect", "Size Flags", "Textures" ]
+
+[node name="ColorPalette" parent="." index="1" instance=ExtResource( 2 )]
+
+visible = false
+margin_top = 44.0
+margin_bottom = 220.0
+
+[connection signal="pressed" from="current_color_btn" to="." method="_on_current_color_btn_pressed"]
+
+[connection signal="color_selected" from="ColorPalette" to="." method="_on_ColorPalette_color_selected"]
+
+

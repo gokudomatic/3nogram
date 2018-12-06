@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hint.wav-d0a35e7e9f4c56e668db80e2f2967a65.sample"
+
+[deps]
+
+source_file="res://hint.wav"
+source_md5="54f4ee674a18c8d1e05b8d7f83bc4d9d"
+
+dest_files=[ "res://.import/hint.wav-d0a35e7e9f4c56e668db80e2f2967a65.sample" ]
+dest_md5="05a3efb8556d7e54aac0cfa524323a1e"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

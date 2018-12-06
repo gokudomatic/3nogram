@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Dagaception.ogg-af0859627c0a314f7206d8fd2f5340a6.oggstr"
+
+[deps]
+
+source_file="res://Dagaception.ogg"
+source_md5="95f8a524c9f0f8cea760898a21f1b9cf"
+
+dest_files=[ "res://.import/Dagaception.ogg-af0859627c0a314f7206d8fd2f5340a6.oggstr" ]
+dest_md5="3d3433b09e37675842f05a313e5df446"
+
+[params]
+
+loop=true
+loop_offset=44.415

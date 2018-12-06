@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://custom_font.tres" type="Theme" id=1]
+[ext_resource path="res://PuzzleListItem.gd" type="Script" id=2]
+[ext_resource path="res://StarBtn.tscn" type="PackedScene" id=3]
+[ext_resource path="res://textures/star_full.png" type="Texture" id=4]
+
+[node name="PuzzleListItem" type="Button" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 0, 90 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+script = ExtResource( 2 )
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Theme", "custom_fonts" ]
+caption = null
+
+[node name="title" type="Label" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = 38.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = ExtResource( 1 )
+text = "Item"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Theme" ]
+
+[node name="LikeContainer" type="HBoxContainer" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 40.0
+margin_right = 186.0
+margin_bottom = 72.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Mouse" ]
+
+[node name="LikeIcon1" parent="LikeContainer" index="0" instance=ExtResource( 3 )]
+
+margin_right = 32.0
+margin_bottom = 32.0
+focus_mode = 2
+
+[node name="FamilyFriendlyIcon" type="TextureRect" parent="." index="2"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -44.0
+margin_top = 40.0
+margin_right = -12.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 32, 32 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Mouse" ]
+
+[connection signal="pressed" from="." to="." method="_on_PuzzleListItem_pressed"]
+
+

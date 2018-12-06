@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/break.wav-3e28ac90d8931a76500773b845d5b480.sample"
+
+[deps]
+
+source_file="res://break.wav"
+source_md5="1176278dc22f4e538fe57764c22d119b"
+
+dest_files=[ "res://.import/break.wav-3e28ac90d8931a76500773b845d5b480.sample" ]
+dest_md5="a6bd9b422d0b09f05e52d7f9a2841638"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

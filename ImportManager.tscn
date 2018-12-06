@@ -1,0 +1,140 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ImportManager.gd" type="Script" id=1]
+[ext_resource path="res://textures/abstract-art-decoration-1029624.jpg" type="Texture" id=2]
+[ext_resource path="res://textures/full_button_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://RestImportPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://loading_screen.tscn" type="PackedScene" id=5]
+
+[node name="ImportManager" type="Control"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+
+[node name="bg" type="TextureRect" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="server_list" type="ItemList" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = 16.0
+margin_right = 271.0
+margin_bottom = -73.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
+items = [ "Load from file", null, false ]
+select_mode = 0
+allow_reselect = false
+icon_mode = 1
+fixed_icon_size = Vector2( 0, 0 )
+_sections_unfolded = [ "Icon", "custom_fonts" ]
+
+[node name="importBtn" type="Button" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 148.0
+margin_top = -60.0
+margin_right = 269.0
+margin_bottom = -13.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
+disabled = true
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Import"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="backBtn" type="Button" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 14.0
+margin_top = -60.0
+margin_right = 135.0
+margin_bottom = -13.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Back"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="RestImportPanel" parent="." index="4" instance=ExtResource( 4 )]
+
+visible = false
+
+[node name="loading_screen" parent="." index="5" instance=ExtResource( 5 )]
+
+[connection signal="item_selected" from="server_list" to="." method="_on_server_list_item_selected"]
+
+[connection signal="pressed" from="importBtn" to="." method="_on_importBtn_pressed"]
+
+[connection signal="pressed" from="backBtn" to="." method="_on_backBtn_pressed"]
+
+[connection signal="busy_status_changed" from="RestImportPanel" to="." method="_on_busy_status_changed"]
+
+[connection signal="logged_in" from="RestImportPanel" to="." method="_on_RestImportPanel_logged_in"]
+
+[connection signal="puzzle_selected" from="RestImportPanel" to="." method="_on_RestImportPanel_puzzle_selected"]
+
+

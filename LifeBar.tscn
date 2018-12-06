@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "tool
+extends HBoxContainer
+
+const slot=preload(\"res://LifeSlot.tscn\")
+
+export(int,0,10) var value=5 setget set_value
+
+func _ready():
+	set_value(value)
+
+func set_value(val):
+	if val!=null:
+		value=val
+		while get_child_count()>0:
+			remove_child(get_child(0))
+		for i in range(val):
+			var instance=slot.instance()
+			instance.set_custom_minimum_size(Vector2(get_size().y,get_size().y))
+			add_child(instance)"
+_sections_unfolded = [ "Resource" ]
+
+[node name="LifeBar" type="HBoxContainer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 66.0
+margin_bottom = 10.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+script = SubResource( 1 )
+_sections_unfolded = [ "Rect" ]
+value = 5
+
+

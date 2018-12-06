@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://cube.dae" type="PackedScene" id=1]
+[ext_resource path="res://cube.gd" type="Script" id=2]
+
+[node name="Cube" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+
+[node name="BrokenCube" parent="." index="0"]
+
+_sections_unfolded = [ "material" ]
+
+[node name="BrokenCube.001" parent="." index="1"]
+
+_sections_unfolded = [ "material" ]
+
+[node name="BrokenCube.002" parent="." index="2"]
+
+_sections_unfolded = [ "material" ]
+
+[node name="BrokenCube.003" parent="." index="3"]
+
+_sections_unfolded = [ "material" ]
+
+[node name="BrokenCube.004" parent="." index="4"]
+
+_sections_unfolded = [ "material" ]
+
+[node name="BrokenCube.005" parent="." index="5"]
+
+_sections_unfolded = [ "material" ]
+
+[node name="BrokenCube.006" parent="." index="6"]
+
+_sections_unfolded = [ "material" ]
+
+[node name="BrokenCube.007" parent="." index="7"]
+
+_sections_unfolded = [ "material" ]
+
+

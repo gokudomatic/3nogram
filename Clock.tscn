@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Clock.gd" type="Script" id=1]
+
+[node name="Clock" type="Control"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 50.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+warning_time_limit = 5
+gameover_time_limit = 15
+border_width = 2
+perfect_color = Color( 0, 0.8, 0, 1 )
+warning_color = Color( 0.8, 0.8, 0, 1 )
+gameover_color = Color( 0.8, 0, 0, 1 )
+border_color = Color( 0.2, 0.2, 0.2, 1 )
+current_time = 0
+running = false
+
+

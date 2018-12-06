@@ -1,0 +1,69 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "tool
+extends Control
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+export(Color) var color_top=Color(0.7,0.7,0,1)
+export(Color) var color_side=Color(0.6,0.5,0,1)
+export(Color) var color_shadow=Color(0.3,0.3,0,1)
+
+func _ready():
+	# Called every time the node is added to the scene.
+	# Initialization here
+	pass
+
+func _get_minimum_size():
+	return Vector2(5,5)
+
+func _draw():
+	var d_offset=rect_size/2
+	
+	var points_top = PoolVector2Array()
+	points_top.push_back(d_offset)
+	points_top.push_back(Vector2(0,d_offset.y/2))
+	points_top.push_back(Vector2(d_offset.x,0))
+	points_top.push_back(Vector2(rect_size.x,d_offset.y/2))
+	draw_polygon(points_top, PoolColorArray([color_top]))
+	
+	var points_side = PoolVector2Array()
+	points_side.push_back(d_offset)
+	points_side.push_back(Vector2(0,d_offset.y/2))
+	points_side.push_back(Vector2(0,d_offset.y*3/2))
+	points_side.push_back(Vector2(d_offset.x,rect_size.y))
+	draw_polygon(points_side, PoolColorArray([color_side]))
+	
+	var points_shadow = PoolVector2Array()
+	points_shadow.push_back(d_offset)
+	points_shadow.push_back(Vector2(rect_size.x,d_offset.y/2))
+	points_shadow.push_back(Vector2(rect_size.x,d_offset.y*3/2))
+	points_shadow.push_back(Vector2(d_offset.x,rect_size.y))
+	draw_polygon(points_shadow, PoolColorArray([color_shadow]))
+"
+
+[node name="LifeSlot" type="Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 5.0
+margin_bottom = 5.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = SubResource( 1 )
+_sections_unfolded = [ "Size Flags" ]
+color_top = Color( 0.851562, 0.851562, 0, 1 )
+color_side = Color( 0.734375, 0.533569, 0, 1 )
+color_shadow = Color( 0.429688, 0.429688, 0, 1 )
+
+

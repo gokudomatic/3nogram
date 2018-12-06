@@ -1,0 +1,358 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Builder.gd" type="Script" id=1]
+[ext_resource path="res://CellManager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Camera_center.gd" type="Script" id=3]
+[ext_resource path="res://world_env.tres" type="Environment" id=4]
+[ext_resource path="res://textures/full_button_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://ZoomSlider.gd" type="Script" id=6]
+[ext_resource path="res://ColorPicker.tscn" type="PackedScene" id=7]
+[ext_resource path="res://custom_font.tres" type="Theme" id=8]
+
+[node name="Builder" type="Spatial" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="manager" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="camera_center" type="Spatial" parent="." index="1"]
+
+script = ExtResource( 3 )
+sensitivity = 0.005
+
+[node name="Camera_pitch" type="Spatial" parent="camera_center" index="0"]
+
+[node name="Camera" type="Camera" parent="camera_center/Camera_pitch" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="OmniLight" type="OmniLight" parent="camera_center/Camera_pitch/Camera" index="0"]
+
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 1.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 50.0
+omni_attenuation = 1.0
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Omni" ]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
+
+environment = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="3"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Container" type="VBoxContainer" parent="CanvasLayer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -252.0
+margin_right = 139.0
+margin_bottom = -10.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 2
+
+[node name="BreakBtn" type="Button" parent="CanvasLayer/Container" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 117.0
+margin_right = 129.0
+margin_bottom = 156.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "BREAK"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="PaintBtn" type="Button" parent="CanvasLayer/Container" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 160.0
+margin_right = 129.0
+margin_bottom = 199.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "PAINT"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="BuildBtn" type="Button" parent="CanvasLayer/Container" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 203.0
+margin_right = 129.0
+margin_bottom = 242.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "BUILD"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="ZoomSlider" type="VSlider" parent="CanvasLayer" index="1"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = 50.0
+margin_right = -20.0
+margin_bottom = -50.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 200.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = false
+editable = true
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 2
+script = ExtResource( 6 )
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="ColorPicker" parent="CanvasLayer" index="2" instance=ExtResource( 7 )]
+
+margin_left = 11.0
+margin_top = 72.0
+margin_right = 55.0
+margin_bottom = 292.0
+
+[node name="MenuBtn" type="Button" parent="CanvasLayer" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 13.0
+margin_top = 13.0
+margin_right = 130.0
+margin_bottom = 59.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "MENU"
+flat = false
+align = 1
+_sections_unfolded = [ "Margin", "custom_fonts" ]
+
+[node name="MenuDialog" type="PopupDialog" parent="CanvasLayer" index="4"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 85.0
+margin_top = 72.0
+margin_right = 290.0
+margin_bottom = 247.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = true
+_sections_unfolded = [ "Popup" ]
+
+[node name="PropertiesBtn" type="Button" parent="CanvasLayer/MenuDialog" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 13.0
+margin_top = 16.0
+margin_right = 188.0
+margin_bottom = 55.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 8 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Properties"
+flat = false
+align = 1
+_sections_unfolded = [ "Theme" ]
+
+[node name="HintsBtn" type="Button" parent="CanvasLayer/MenuDialog" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 13.0
+margin_top = 69.0
+margin_right = 188.0
+margin_bottom = 108.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 8 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Hints"
+flat = false
+align = 1
+_sections_unfolded = [ "Theme" ]
+
+[node name="CloseBtn" type="Button" parent="CanvasLayer/MenuDialog" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 13.0
+margin_top = 121.0
+margin_right = 188.0
+margin_bottom = 160.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 8 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Close"
+flat = false
+align = 1
+_sections_unfolded = [ "Theme" ]
+
+[connection signal="zoom_change" from="camera_center" to="CanvasLayer/ZoomSlider" method="_on_camera_center_zoom_change"]
+
+[connection signal="toggled" from="CanvasLayer/Container/BreakBtn" to="." method="_on_BreakBtn_toggled"]
+
+[connection signal="toggled" from="CanvasLayer/Container/PaintBtn" to="." method="_on_PaintBtn_toggled"]
+
+[connection signal="toggled" from="CanvasLayer/Container/BuildBtn" to="." method="_on_BuildBtn_toggled"]
+
+[connection signal="value_changed" from="CanvasLayer/ZoomSlider" to="camera_center" method="_on_ZoomSlider_value_changed"]
+
+[connection signal="color_changed" from="CanvasLayer/ColorPicker" to="." method="_on_ColorPicker_color_changed"]
+
+[connection signal="pressed" from="CanvasLayer/MenuBtn" to="." method="_on_MenuBtn_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/MenuDialog/PropertiesBtn" to="." method="_on_PropertiesBtn_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/MenuDialog/HintsBtn" to="." method="_on_HintsBtn_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/MenuDialog/CloseBtn" to="." method="_on_CloseBtn_pressed"]
+
+

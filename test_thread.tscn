@@ -1,0 +1,129 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://connectors/RESTRequest.tscn" type="PackedScene" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Control
+
+var sessionid=null
+
+func _ready():
+	# Called when the node is added to the scene for the first time.
+	# Initialization here
+	pass
+
+
+func _on_Button_pressed():
+	$RESTRequest.request_version()
+	print(yield($RESTRequest,\"rest_completed\"))
+
+func _on_login_button_pressed():
+	$RESTRequest.login()
+	sessionid=yield($RESTRequest,\"rest_completed\").sessionid
+	print(sessionid)
+
+
+func _on_token_button_pressed():
+	$RESTRequest.get_token(sessionid)
+	print(yield($RESTRequest,\"rest_completed\"))
+"
+
+[node name="Node2D" type="Control"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = SubResource( 1 )
+
+[node name="Button" type="Button" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 42.0
+margin_top = 40.0
+margin_right = 83.0
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "get_version"
+flat = false
+align = 1
+
+[node name="RESTRequest" parent="." index="1" instance=ExtResource( 1 )]
+
+[node name="login_button" type="Button" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 169.0
+margin_top = 41.0
+margin_right = 212.0
+margin_bottom = 61.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "login"
+flat = false
+align = 1
+
+[node name="token_button" type="Button" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 266.0
+margin_top = 41.0
+margin_right = 338.0
+margin_bottom = 61.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "get token"
+flat = false
+align = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+
+[connection signal="pressed" from="login_button" to="." method="_on_login_button_pressed"]
+
+[connection signal="pressed" from="token_button" to="." method="_on_token_button_pressed"]
+
+

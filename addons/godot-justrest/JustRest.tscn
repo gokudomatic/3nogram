@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/godot-justrest/justrest.gd" type="Script" id=1]
+
+[node name="JustRest" type="Node"]
+
+script = ExtResource( 1 )
+result = null
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." index="0"]
+
+download_file = ""
+use_threads = false
+body_size_limit = -1
+max_redirects = 8
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
+
+

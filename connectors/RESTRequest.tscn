@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://connectors/RESTRequest.gd" type="Script" id=1]
+
+[node name="RESTRequest" type="HTTPRequest"]
+
+download_file = ""
+use_threads = false
+body_size_limit = -1
+max_redirects = 8
+script = ExtResource( 1 )
+
+[connection signal="request_completed" from="." to="." method="_on_RESTRequest_request_completed"]
+
+

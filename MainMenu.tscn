@@ -1,0 +1,212 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://textures/abstract-art-decoration-1029624.jpg" type="Texture" id=1]
+[ext_resource path="res://textures/button_font.tres" type="DynamicFont" id=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Control
+
+func _ready():
+	if not game_data.config.nomusic:
+		get_tree().call_group(\"sfx\",\"play\",\"intro\")
+	get_tree().call_group(\"sfx\",\"stop_music\")
+
+func _on_PlayBtn_pressed():
+	get_tree().call_group(\"sfx\",\"stop\",\"intro\")
+	get_tree().call_group(\"sfx\",\"play\",\"select\")
+	get_tree().change_scene(\"res://LevelSelection.tscn\")
+	
+func _on_BuildBtn_pressed():
+	get_tree().call_group(\"sfx\",\"stop\",\"intro\")
+	get_tree().call_group(\"sfx\",\"play\",\"select\")
+	get_tree().change_scene(\"res://MyPuzzleManagement.tscn\")
+
+func _on_OptionsBtn_pressed():
+	get_tree().call_group(\"sfx\",\"stop\",\"intro\")
+	get_tree().call_group(\"sfx\",\"play\",\"select\")
+	get_tree().change_scene(\"res://OptionsMenu.tscn\")
+"
+
+[sub_resource type="DynamicFontData" id=2]
+
+hinting = 2
+font_path = "res://textures/UNICODE0.TTF"
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 200
+use_mipmaps = false
+use_filter = true
+font_data = SubResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="MainMenu" type="Control"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = SubResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Anchor", "Grow Direction" ]
+
+[node name="Label2" type="Label" parent="." index="1"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -287.0
+margin_top = 26.0
+margin_right = -137.0
+margin_bottom = 244.0
+rect_rotation = -5.0412
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.0196838, 0.335938, 0.202518, 1 )
+text = "3"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="Label" type="Label" parent="." index="2"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -185.0
+margin_top = 89.0
+margin_right = 291.0
+margin_bottom = 188.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.674809, 0.277359, 0.855469, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "NOGRAM"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="PlayBtn" type="Button" parent="." index="3"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -416.0
+margin_top = -53.0
+margin_right = -64.0
+margin_bottom = 92.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 2 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Play"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="BuildBtn" type="Button" parent="." index="4"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 63.0
+margin_top = -57.0
+margin_right = 419.0
+margin_bottom = 88.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 2 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Build"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="OptionsBtn" type="Button" parent="." index="5"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -208.0
+margin_top = -172.0
+margin_right = 207.0
+margin_bottom = -27.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 2 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Options"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[connection signal="pressed" from="PlayBtn" to="." method="_on_PlayBtn_pressed"]
+
+[connection signal="pressed" from="BuildBtn" to="." method="_on_BuildBtn_pressed"]
+
+[connection signal="pressed" from="OptionsBtn" to="." method="_on_OptionsBtn_pressed"]
+
+
